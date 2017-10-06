@@ -165,7 +165,7 @@ var createTable_ = function() {
     
     withNextId: function(callback) {
 	  var ids = this.idValues();
-      var nextId = ids.length > 0 ? Math.max.apply(null, ids) + 1 : 1;
+      var nextId = ids.length > 0 ? Math.max.apply(null, ids) + 1 : this.idSeed;
       callback(nextId);
     },
     
@@ -223,7 +223,7 @@ var createTable_ = function() {
       Object.defineProperty(Child.prototype, name, { value: instanceProps[name] });
     }
     
-    Object.assign(Child, Object.assign({ idColumn: '#' }, classProps));
+    Object.assign(Child, Object.assign({ idColumn: '#', idSeed: 1 }, classProps));
     
     return Child;
   };
